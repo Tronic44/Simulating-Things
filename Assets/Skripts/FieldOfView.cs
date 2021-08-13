@@ -11,7 +11,7 @@ public class FieldOfView : MonoBehaviour {
 	public LayerMask targetMask;
 	public LayerMask obstacleMask;
 
-	[HideInInspector]
+	//[HideInInspector]
 	public List<Transform> visibleTargets = new List<Transform>();
 
 	public float meshResolution;
@@ -25,8 +25,10 @@ public class FieldOfView : MonoBehaviour {
 		viewMesh = new Mesh ();
 		viewMesh.name = "View Mesh";
 		viewMeshFilter.mesh = viewMesh;
-
-		StartCoroutine ("FindTargetsWithDelay", .2f);
+        meshResolution = 0.1f;
+        edgeResolveIterations = 2;
+        edgeDstThreshold = 1f;
+        StartCoroutine ("FindTargetsWithDelay", .2f);
 	}
 
 
